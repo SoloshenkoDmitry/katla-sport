@@ -122,7 +122,7 @@ namespace KatlaSport.Services.HiveManagement
         {
             var dbHives = await _context.Hives.Where(c => hiveId == c.Id).ToArrayAsync();
 
-            if (dbHives.Length==0)
+            if (dbHives.Length == 0)
             {
                 throw new RequestedResourceNotFoundException();
             }

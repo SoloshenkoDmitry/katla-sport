@@ -56,5 +56,59 @@ namespace KatlaSport.WebApi.Controllers
             await _hiveSectionService.SetStatusAsync(hiveSectionId, deletedStatus);
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
+
+        [HttpPost]
+        [Route("")]
+        [SwaggerResponse(HttpStatusCode.Created, Description = "Creates a new hive section.")]
+        [SwaggerResponse(HttpStatusCode.BadRequest)]
+        [SwaggerResponse(HttpStatusCode.Conflict)]
+        [SwaggerResponse(HttpStatusCode.InternalServerError)]
+        public async Task<IHttpActionResult> AddHiveSection([FromBody] UpdateHiveSectionRequest createRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var haveSection = await _hiveSectionService.CreateHiveSectionAsync(createRequest);//_hiveService.CreateHiveAsync(createRequest);
+            var location = $"/api/sections/{haveSection.Id}";
+            return Created<HiveSection>(location, haveSection);
+        }
+
+        [HttpPut]
+        [Route("{hiveSectionId:int:min(1)}")]
+        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Updates an existed hive section.")]
+        [SwaggerResponse(HttpStatusCode.BadRequest)]
+        [SwaggerResponse(HttpStatusCode.Conflict)]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
+        [SwaggerResponse(HttpStatusCode.InternalServerError)]
+        public async Task<IHttpActionResult> UpdateHiveSection([FromUri] int hiveSectionId, [FromBody] UpdateHiveSectionRequest updateRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _hiveSectionService.UpdateHiveSectionAsync(hiveSectionId, updateRequest);
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
+        }
+
+        [HttpDelete]
+        [Route("{hiveSectionId:int:min(1)}")]
+        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Deletes an existed hive section.")]
+        [SwaggerResponse(HttpStatusCode.BadRequest)]
+        [SwaggerResponse(HttpStatusCode.Conflict)]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
+        [SwaggerResponse(HttpStatusCode.InternalServerError)]
+        public async Task<IHttpActionResult> DeleteHiveSection([FromUri] int hiveSectionId)
+        {
+            if (hiveSectionId < 1)
+            {
+                return BadRequest($"Invalid {nameof(hiveSectionId)}");
+            }
+
+            await _hiveSectionService.DeleteHiveSectionAsync(hiveSectionId);
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
+        }
     }
 }
