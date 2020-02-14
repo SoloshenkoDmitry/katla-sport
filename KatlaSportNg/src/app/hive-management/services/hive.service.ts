@@ -30,8 +30,8 @@ export class HiveService {
     return this.http.post<Hive>(`${this.url}`, hive);
   }
 
-  updateHive(hive: Hive): Observable<Object> {
-    return this.http.put(`${this.url}${hive.id}`, hive);
+  updateHive(hive: Hive): Observable<Hive> {
+    return this.http.put<Hive>(`${this.url}${hive.id}`, hive);
   }
 
   deleteHive(hiveId: number): Observable<Object> {
