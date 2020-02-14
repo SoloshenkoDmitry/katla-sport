@@ -20,6 +20,8 @@
         /// </summary>
         public string Code { get; set; }
 
+        public int StoreHiveId { get; set; }
+
         /// <summary>
         /// Gets or sets a value indicating whether a hive is deleted.
         /// </summary>
