@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using KatlaSport.DataAccess.ProductStore;
+using KatlaSport.DataAccess.ProductSupplier;
 
 namespace KatlaSport.DataAccess.ProductCatalogue
 {
@@ -78,5 +79,10 @@ namespace KatlaSport.DataAccess.ProductCatalogue
         /// Gets or sets a collection of items for the product.
         /// </summary>
         public virtual ICollection<StoreItem> Items { get; set; }
+
+        /// <summary>
+        /// Gets or sets a collection of items for the supplies.
+        /// </summary>
+        public virtual ICollection<Supply> Supplies { get; set; }
     }
 }

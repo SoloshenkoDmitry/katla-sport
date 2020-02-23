@@ -5,6 +5,7 @@ using KatlaSport.DataAccess.Migrations;
 using KatlaSport.DataAccess.ProductCatalogue;
 using KatlaSport.DataAccess.ProductStore;
 using KatlaSport.DataAccess.ProductStoreHive;
+using KatlaSport.DataAccess.ProductSupplier;
 
 namespace KatlaSport.DataAccess
 {
@@ -68,6 +69,21 @@ namespace KatlaSport.DataAccess
         /// Gets or sets a <see cref="DbSet"/> for <see cref="Customer"/>.
         /// </summary>
         public DbSet<Customer> Customers { get; set; }
+
+        /// <summary>
+        /// Gets or sets a <see cref="DbSet"/> for <see cref="Suppliers"/>.
+        /// </summary>
+        public DbSet<Supplier> Suppliers { get; set; }
+
+        /// <summary>
+        /// Gets or sets a <see cref="DbSet"/> for <see cref="SupplierNotes"/>.
+        /// </summary>
+        public DbSet<SupplierNote> SupplierNotes { get; set; }
+
+        /// <summary>
+        /// Gets or sets a <see cref="DbSet"/> for <see cref="Supplies"/>.
+        /// </summary>
+        public DbSet<Supply> Supplies { get; set; }
 
         /// <summary>
         /// Overrides base method.
