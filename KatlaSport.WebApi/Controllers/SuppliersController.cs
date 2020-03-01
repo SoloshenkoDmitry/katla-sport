@@ -8,6 +8,7 @@ using KatlaSport.WebApi.CustomFilters;
 using Microsoft.Web.Http;
 using Swashbuckle.Swagger.Annotations;
 using System.Net.Http;
+using KatlaSport.Services.SupplierNoteManagement;
 
 namespace KatlaSport.WebApi.Controllers
 {
@@ -19,10 +20,12 @@ namespace KatlaSport.WebApi.Controllers
     public class SuppliersController : ApiController
     {
         private readonly ISupplierService _supplierService;
+        private readonly ISupplierNoteService _supplierNoteService;
 
-        public SuppliersController(ISupplierService supplierService)
+        public SuppliersController(ISupplierService supplierService, ISupplierNoteService supplierNoteService)
         {
             _supplierService = supplierService ?? throw new ArgumentNullException(nameof(supplierService));
+            _supplierNoteService = supplierNoteService ?? throw new ArgumentNullException(nameof(supplierNoteService));
         }
         
         [HttpGet]
@@ -44,6 +47,17 @@ namespace KatlaSport.WebApi.Controllers
         {
             var supplier = await _supplierService.GetSupplierAsync(supplierId);
             return Ok(supplier);
+        }
+        
+        [HttpGet]
+        [Route("{supplierId:int:min(1)}/notes")]
+        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of supplier notes for specified supplier.", Type = typeof(SupplierNoteListItem))]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
+        [SwaggerResponse(HttpStatusCode.InternalServerError)]
+        public async Task<IHttpActionResult> GetSupplierNoteAsync(int supplierId)
+        {
+            var note = await _supplierNoteService.GetSupplierNotesForSupplierAsync(supplierId);
+            return Ok(note);
         }
         
         [HttpPut]

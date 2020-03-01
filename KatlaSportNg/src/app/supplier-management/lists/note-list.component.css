@@ -1,0 +1,11 @@
+.list{
+    background-color: #c2c2c2;
+    margin-right: 10px;
+    float: left;
+    width: 60%;
+    margin-left: -40px;
+}
+
+.clearfix{
+    clear: left;
+}

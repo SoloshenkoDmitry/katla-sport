@@ -11,6 +11,12 @@ import { ProductCategoryListComponent } from './product-management/lists/product
 import { ProductCategoryProductListComponent } from './product-management/lists/product-category-product-list.component';
 import { ProductListComponent } from './product-management/lists/product-list.component';
 
+import { SupplierListComponent } from './supplier-management/lists/supplier-list.component';
+import { SupplierFormComponent } from './supplier-management/forms/supplier-form.component';
+import { NoteListComponent } from './supplier-management/lists/note-list.component';
+import { NoteFormComponent } from './supplier-management/forms/note-form.component';
+
+
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'main', component: MainPageComponent },
@@ -27,7 +33,15 @@ const routes: Routes = [
   { path: 'hive/:id/sections', component: HiveSectionListComponent },
   { path: 'section/:id', component: HiveSectionFormComponent },
   { path: 'hive/:hiveId/section/:id', component: HiveSectionFormComponent },
-  { path: 'hive/:hiveId/section', component: HiveSectionFormComponent }
+  { path: 'hive/:hiveId/section', component: HiveSectionFormComponent },
+
+  { path: 'suppliers', component: SupplierListComponent },
+  { path: 'supplier', component: SupplierFormComponent },
+  { path: 'supplier/:id', component: SupplierFormComponent },
+  { path: 'supplier/:id/notes', component: NoteListComponent },
+  { path: 'note/:noteId', component: NoteFormComponent },
+  { path: 'supplier/:supplierId/note/:parentId', component: NoteFormComponent },
+  { path: 'supplier/:supplierId/note', component: NoteFormComponent },
 ];
 
 @NgModule({

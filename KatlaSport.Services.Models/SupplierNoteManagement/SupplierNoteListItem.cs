@@ -9,5 +9,7 @@
         public string Note { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public int SupplierId { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace KatlaSport.DataAccess.ProductSupplier
 
         public string Phone { get; set; }
 
+        public string Avatar { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime Created { get; set; }
