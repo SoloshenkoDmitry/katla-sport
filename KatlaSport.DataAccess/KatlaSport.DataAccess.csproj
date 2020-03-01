@@ -77,6 +77,10 @@
     <Compile Include="Migrations\202002171753006_AddSupplierAndSupplierNoteAndSupply.Designer.cs">
       <DependentUpon>202002171753006_AddSupplierAndSupplierNoteAndSupply.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003012109522_AddAvatarInSupplier.cs" />
+    <Compile Include="Migrations\202003012109522_AddAvatarInSupplier.Designer.cs">
+      <DependentUpon>202003012109522_AddAvatarInSupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002171753006_AddSupplierAndSupplierNoteAndSupply.resx">
       <DependentUpon>202002171753006_AddSupplierAndSupplierNoteAndSupply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003012109522_AddAvatarInSupplier.resx">
+      <DependentUpon>202003012109522_AddAvatarInSupplier.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

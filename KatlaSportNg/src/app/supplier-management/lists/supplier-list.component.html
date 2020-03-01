@@ -1,0 +1,41 @@
+<div class="container">
+    <h2>Supplier List</h2>
+    <table class="table table-nonfluid">
+      <thead>
+        <th scope="col">#</th>
+        <th scope="col">Company Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Photo</th>
+        <th scope="col"></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let supplier of suppliers">
+          <th scope="row">{{supplier.id}}</th>
+          <th scope="row">{{supplier.companyName}}</th>
+          <th scope="row">{{supplier.phone}}</th>
+          <th scope="row"><img width="80px" src="{{supplier.avatar}}"></th>
+          <td>
+            <span class="btn-toolbar" role="toolbar" aria-label="Suppliesr action buttons" style="display: block; white-space:nowrap;">
+              <div class="btn-group mr-2" role="group" aria-label="Delete group" *ngIf="!supplier.isDeleted" (click)="onDelete(supplier.id)">
+                <button type="button" class="btn btn-danger">Delete</button>
+              </div>
+              <div class="btn-group mr-2" role="group" aria-label="Restore group" *ngIf="supplier.isDeleted" (click)="onRestore(supplier.id)">
+                <button type="button" class="btn btn-warning">Restore</button>
+              </div>
+              <div class="btn-group mr-2" role="group" aria-label="View group">
+                <button routerLink="/supplier/{{supplier.id}}/notes" type="button" class="btn btn-primary">View notes</button>
+              </div>
+              <div class="btn-group" role="group" aria-label="Edit group">
+                <button routerLink="/supplier/{{supplier.id}}" type="button" class="btn btn-primary">Edit</button>
+              </div>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="btn-toolbar" role="toolbar" aria-label="Action buttons">
+      <div class="btn-group" role="group" aria-label="New group">
+        <button routerLink="/supplier" type="button" class="btn btn-primary">New supplier</button>
+      </div>
+    </div>
+  </div>

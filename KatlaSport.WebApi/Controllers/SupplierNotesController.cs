@@ -53,7 +53,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> AddHiveSection([FromBody] UpdateSupplierNoteRequest createRequest)
+        public async Task<IHttpActionResult> AddSupplierNoteAsync([FromBody] UpdateSupplierNoteRequest createRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -72,7 +72,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> UpdateHiveSection([FromUri] int supplierNoteId, [FromBody] UpdateSupplierNoteRequest updateRequest)
+        public async Task<IHttpActionResult> UpdateSupplierNoteAsync([FromUri] int supplierNoteId, [FromBody] UpdateSupplierNoteRequest updateRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace KatlaSport.WebApi.Controllers
         }
         
         [HttpPut]
-        [Route("{supplierNoteId:int:min(1)}/notes/{deletedStatus:bool}")]
+        [Route("{supplierNoteId:int:min(1)}/status/{deletedStatus:bool}")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Sets deleted status for an existed supplier's note.")]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
@@ -101,7 +101,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> DeleteHiveSection([FromUri] int supplierNoteId)
+        public async Task<IHttpActionResult> DeleteSupplierNoteAsync([FromUri] int supplierNoteId)
         {
             if (supplierNoteId < 1)
             {

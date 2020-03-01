@@ -12,6 +12,8 @@ namespace KatlaSport.Services.SupplierManagement
 
         public string Phone { get; set; }
 
+        public string Avatar { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime LastUpdated { get; set; }

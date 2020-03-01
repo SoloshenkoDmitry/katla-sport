@@ -57,6 +57,30 @@ namespace KatlaSport.Services.SupplierNoteManagement
             return result;
         }
 
+        public async Task<List<SupplierNoteListItem>> GetSupplierNotesForSupplierAsync(int supplierId)
+        {
+            var dbSupplierNotes = await _context.SupplierNotes.Where(n => n.SupplierId == supplierId).ToArrayAsync();
+
+            if (dbSupplierNotes.Length == 0)
+            {
+                throw new RequestedResourceNotFoundException();
+            }
+
+            var supplierNotes = dbSupplierNotes.Select(n => Mapper.Map<SupplierNoteListItem>(n)).ToList();
+
+            List<SupplierNoteListItem> result = new List<SupplierNoteListItem>();
+            foreach (var note in supplierNotes)
+            {
+                if (note.ParentId == null)
+                {
+                    result.Add(note);
+                    await GetChildren(result, note.Id);
+                }
+            }
+
+            return result;
+        }
+
         public async Task<SupplierNote> CreateSupplierNoteAsync(UpdateSupplierNoteRequest createRequest)
         {
             var dbSupplierNote = Mapper.Map<UpdateSupplierNoteRequest, DbSupplierNote>(createRequest);

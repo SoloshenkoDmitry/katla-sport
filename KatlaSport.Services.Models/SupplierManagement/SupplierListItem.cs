@@ -10,6 +10,8 @@
 
         public string Phone { get; set; }
 
+        public string Avatar { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public int SupplierNoteCount { get; set; }

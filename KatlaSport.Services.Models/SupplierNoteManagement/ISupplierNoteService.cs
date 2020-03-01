@@ -11,6 +11,8 @@ namespace KatlaSport.Services.SupplierNoteManagement
 
         Task<List<SupplierNoteListItem>> GetSupplierNotesAsync(int noteId);
 
+        Task<List<SupplierNoteListItem>> GetSupplierNotesForSupplierAsync(int supplierId);
+
         Task<SupplierNote> CreateSupplierNoteAsync(UpdateSupplierNoteRequest createRequest);
 
         Task<SupplierNote> UpdateSupplierNoteAsync(int supplierNoteId, UpdateSupplierNoteRequest updateRequest);
